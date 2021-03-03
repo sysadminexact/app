@@ -1,0 +1,125 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="decisao" *ngIf="index != -2">
+      <ion-segment-button value="assinar" (click)="unselectSegment()" class="assinar" [class.assinar-analista]="perfil == 'Analista'">
+        {{ details?.OS_ASSINA =='true' ? 'Assinar' : 'Aceitar' }}
+      </ion-segment-button>
+      <ion-segment-button value="rejeitar" (click)="unselectSegment()" *ngIf="perfil != 'Analista'" class="rejeitar">
+        Rejeitar
+      </ion-segment-button>
+    </ion-segment>
+    <ion-title *ngIf="index == -2">
+      <ion-row>
+        <ion-col text-center>
+            <img src="assets/imgs/logo-exact2.png" class="logoPage"/>
+        </ion-col>
+      </ion-row>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [class.removeMarginScroll]="!hideFooter()">
+    
+  <div [ngSwitch]="decisao" *ngIf="index != -2">
+    <div *ngSwitchCase="'assinar'">
+      <div *ngIf="details?.OS_ASSINA =='true'" margin-bottom class="signature-container" [style.width]="width +'px'" [style.height]="height +'px'">
+        <signature-pad 
+          [options]="signaturePadOptions" 
+          (onEndEvent)="drawComplete()">
+        </signature-pad>
+        <div class="clear"><ion-icon *ngIf="completed" (click)="clear()" name="trash"></ion-icon></div>
+      </div>
+    </div>
+    <div *ngSwitchCase="'rejeitar'">
+      <ion-textarea [(ngModel)]="txaRejeitar" placeholder="Escreva uma justificativa" text-center rows="3" maxlength="111"></ion-textarea>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="row modal-title">
+      <div col-4>Número</div> 
+      <div col-4>Projeto</div>
+      <div col-4>Data</div>
+    </div>
+    <div class="row modal-desc">
+      <div col-4>{{ details?.OS_NUMERO }}</div> 
+      <div col-4>{{ details?.OS_PROJETO }}</div>
+      <div col-4>{{ details?.OS_DATA }}</div>
+    </div>
+  
+    <div class="row modal-title">
+      <div col-3 >Atendimento</div> 
+      <div col-3>Analista</div> 
+      <div col-3>Área</div> 
+      <div col-3>Emissão</div>
+    </div>
+    <div class="row modal-desc">
+      <div col-3 >{{ details?.OS_ATENDIMENTO }}</div>
+      <div col-3>{{ details?.OS_ANALISTA }}</div> 
+      <div col-3>{{ details?.OS_AREA }}</div> 
+      <div col-3>{{ details?.OS_EMISSAO }}</div>
+    </div>
+    
+    <div class="row modal-title">
+      <div col-2 >Início</div> 
+      <div col-3 >Intervalo</div> 
+      <div col-2 >Término</div> 
+      <div col-3 >Translado</div> 
+      <div col-2 >Total</div> 
+    </div>
+    <div class="row modal-desc">
+      <div col-2 >{{ details?.OS_INICIO }}</div> 
+      <div col-3 >{{ details?.OS_INTERVALO }}</div>
+      <div col-2 >{{ details?.OS_TERMINO }}</div>
+      <div col-3 >{{ details?.OS_TRANSLADO }}</div>
+      <div col-2  class="horas">{{ details?.OS_TOTAL }}</div> 
+    </div>
+    
+    <div class="row modal-title">
+      <div col-12 >Consultoria</div> 
+      <!-- <div col-4 >Total</div>  -->
+      <!-- <div col-4 >Atendimento</div>  -->
+    </div>
+    <div class="row modal-desc">
+      <div col-12 >{{ details?.OS_CONSULTORIA }}</div> 
+      <!-- <div col-4  class="horas">{{ details?.OS_TOTAL }}</div>  -->
+      <!-- <div col-4 >{{ details?.OS_ATENDIMENTO }}</div> -->
+      
+    </div>
+  
+    <div class="row modal-title-left">
+      <div col-12 >Assuntos abordados</div> 
+    </div>
+    <div class="row modal-desc-left">
+      <div col-12  class="assunto" *ngFor="let assunto of assuntos">
+        {{ assunto }}
+      </div> 
+    </div>
+    
+    <div class="row modal-title-left">
+      <div col-12 >Observações</div> 
+    </div>
+    <div class="row modal-desc-left">
+      <div col-12  class="assunto" *ngFor="let observacao of observacoes">
+        {{ observacao }}
+      </div> 
+    </div>
+  
+    <div class="row modal-title-left" *ngIf="perfil != 'Cliente'">
+      <div col-12 >Observações Internas</div> 
+    </div>
+    <div class="row modal-desc-left" *ngIf="perfil != 'Cliente'">
+      <div col-12  class="assunto" *ngFor="let observacao_interna of observacoes_internas">
+        {{ observacao_interna }}
+      </div> 
+    </div>
+
+  </div>
+</ion-content>
+
+<ion-footer *ngIf="hideFooter()" [class]="">
+  <button (click)="assinar()" *ngIf="decisao == 'assinar' && completed"  ion-button full color="primary">Enviar assinatura</button>
+  <button (click)="rejeitar()" *ngIf="decisao == 'rejeitar' && txaRejeitar != ''" ion-button full color="danger">Enviar rejeição</button>
+  <button (click)="viewCtrl.dismiss({'status':''})" *ngIf="decisao == ''" ion-button full color="dark">Fechar</button>
+</ion-footer>

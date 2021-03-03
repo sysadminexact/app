@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <ion-row>
+        <ion-col text-center>
+            <img src="assets/imgs/logo-exact2.png" class="logoPage"/>
+        </ion-col>
+      </ion-row>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Puxe para atualizar"
+      refreshingSpinner="bubbles"
+      refreshingText="Aguarde por favor...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div text-center class="content-title">
+      <h4>Ordens de serviço</h4>
+      <p *ngIf="ordens.length == 0 && !isLoading">
+        Não existem ordens de serviço no momento
+      </p>
+  </div>
+  
+  <ion-list padding-top *ngIf="ordens.length > 0">
+        <ion-item *ngFor="let item of ordens; let i = index" class="item-os" >
+          <div class="row">
+            <ion-col col-12>
+              <div class="os-title">OS nº {{ item?.OS_NUMERO }}</div>
+              <div class="os-title">{{ item?.OS_EMPRESA }}</div>
+              <p class="os-desc">{{ item?.OS_PROJETO +" | "+ item?.OS_ANALISTA +" | "+ item?.OS_EMISSAO}}</p>
+            </ion-col>
+          </div>
+          <div clas="os-verdetalhes" col-12 text-center *ngIf="! item.signature?.length > 0">
+              <button ion-button full (click)="openModalDetails(item, i)">Ver detalhes</button>
+          </div>
+        </ion-item>
+    </ion-list>
+</ion-content>
+
+<ion-footer>
+  <div class="row">
+    <div col-8 text-start>
+        Bem vindo {{ user_name }}
+    </div>
+    <div col text-end padding-right>
+      {{ today | date : "dd/MM/y" }}  
+    </div>
+  </div>
+</ion-footer>

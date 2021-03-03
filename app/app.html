@@ -1,0 +1,26 @@
+<ion-split-pane>
+  <ion-menu [content]="content" *ngIf="rootPage != 'LoginPage'">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>
+          <img src="assets/imgs/logo-exact2.png" class="logoMenu"/>
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-list>
+        <button menuClose ion-item  icon-start *ngFor="let p of pages" (click)="openPage(p)">
+          <ion-icon [name]="p.icon"></ion-icon>
+          {{p.title}}
+        </button>
+      </ion-list>
+    </ion-content>
+    <ion-footer padding-bottom text-center style="color:lightgray;">
+        <p>Versão: 1.0.0</p>
+        <p>Desenvolvido por Zero1 Creations</p>
+      </ion-footer>
+  </ion-menu>
+
+  <ion-nav [root]="rootPage" main #content swipeBackEnabled="false"></ion-nav>
+</ion-split-pane>

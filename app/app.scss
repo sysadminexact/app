@@ -1,0 +1,73 @@
+.toolbar-title{
+    text-align: center;
+    height: auto;
+  }
+  
+  .toolbar-title-ios{
+      @media only screen and (min-width: 480px) {
+          .logoPage{
+              max-width: 35% !important;
+          }
+      }
+      @media only screen and (min-width: 768px) {
+          .logoPage{
+              max-width: 20% !important;
+          }
+      }
+  }
+  
+  .toolbar-title-md {
+      .logoPage, .logoMenu{
+          @media only screen and (min-width: 360px) {
+              max-width: 60% !important;
+          }
+      }
+      .logoPage{
+          @media only screen and (min-width: 600px) {
+              max-width: 30% !important;
+          }
+          @media only screen and (min-width: 900px) {
+              max-width: 20% !important;
+          }
+          margin-right: 56px;
+      }
+   }
+   
+  .scroll-content{
+       padding-top: 10px;
+   }
+  
+   .toast-message {
+      white-space:pre !important;
+      text-align: center;
+      font-weight: bold;
+    }
+  
+    .alert-title{
+        text-align: center !important;
+    }
+  
+    .alert-button-group{
+        justify-content: center !important;
+    }
+  
+    .alert-button{
+        font-size: large !important;
+    }
+  
+    .alert-button:last-child{
+        color: color($colors, danger);
+    }
+  
+    .content-title {
+      h4, p{
+         margin: 1px;
+      }
+      P{
+         margin-bottom: 10px;
+      }
+    }
+  
+    .menu-inner button.item:last-of-type {
+        padding-top: 30px;
+    }

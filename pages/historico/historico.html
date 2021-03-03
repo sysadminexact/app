@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <ion-row>
+        <ion-col text-center>
+            <img src="assets/imgs/logo-exact2.png" class="logoPage"/>
+        </ion-col>
+      </ion-row>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Puxe para atualizar"
+      refreshingSpinner="bubbles"
+      refreshingText="Aguarde por favor...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div text-center class="content-title">
+      <h4>Histórico</h4>
+      <p *ngIf="historico.length == 0 && !isLoading">
+        Não existem ordens de serviço no momento
+      </p>
+  </div>
+
+  <table margin-top *ngIf="historico.length > 0">
+      <thead>
+        <tr>
+          <th>Empresa</th>
+          <th>Ordem nº</th>
+          <th colspan="2">Assinado em</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of historico">
+          <td>{{ item.OS_EMPRESA }}</td>
+          <td>{{ item.OS_NUMERO }}</td>
+          <td>{{ item.OS_DATA_ASSINATURA }}</td>
+          <td text-center><button (click)="verDetalhes(item)" ion-button small><ion-icon name="arrow-forward"></ion-icon></button></td>
+        </tr>
+      </tbody>
+    </table>
+    
+</ion-content>
+
+<ion-footer>
+  <div class="row">
+    <div col-8 text-start>
+        Bem vindo {{ user_name }}
+    </div>
+    <div col text-end padding-right>
+      {{ today | date : "dd/MM/y" }}  
+    </div>
+  </div>
+</ion-footer>

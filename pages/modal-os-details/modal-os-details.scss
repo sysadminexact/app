@@ -1,0 +1,104 @@
+page-modal-os-details {
+    .logoPage {
+        margin: 0 !important;
+    }
+    
+    .container{
+        border: 1px solid #dedede;
+        border-bottom: transparent;
+    }
+    
+    .modal-title{
+        background-color: #F4F4F4;
+        font-weight: bold;
+        text-align: center;
+        font-size: smaller; /* 16-05-2019*/
+    }
+
+    .modal-desc{
+        font-size: small !important;
+        text-align: center;
+       div{
+           padding-bottom: 15px;
+       }
+    }  
+
+    .modal-title-left{ /* 16-05-2019*/
+        background-color: #F4F4F4;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    .modal-desc-left{ /* 16-05-2019*/
+        font-size: small !important;
+        text-align: left;
+       div{
+           padding-bottom: 15px;
+       }
+    }  
+
+    .assunto:not(:last-child){
+        border-bottom: 0.1px #444 dotted;
+    }
+
+    .horas{
+        background-color: #FFFF99;
+        font-weight: bold;
+        font-size: medium;
+    }
+
+    .segment-button.assinar{
+        color: color($colors, primary);
+        border: 1px color($colors, primary) solid;
+        border-bottom: 2px color($colors, primary) solid;
+    }
+    .assinar-analista{
+        border-radius: 4px !important;
+        border-left-width: 1px !important;
+    }
+    .segment-button.rejeitar{
+        color: color($colors, danger);
+        border: 1px color($colors, danger) solid;
+        border-bottom: 2px color($colors, danger) solid;
+    }
+
+    .segment-activated{
+        color: #FAFAFA !important;
+    }
+    .segment-activated.assinar  {
+        background-color: color($colors, primary) !important;
+        border: 1px color($colors, primary) solid !important;
+    }
+    .segment-activated.rejeitar  {
+        background-color: color($colors, danger) !important;
+        border: 1px color($colors, danger) solid !important;
+    }
+
+    ion-textarea{
+        border: 1px dashed;
+        margin-bottom: 10px;
+        width: 98%;
+        margin-left: 1%;
+    }
+
+    textarea{
+        margin-left: 4px !important;
+    }
+
+    .signature-container{
+        border: 1px dashed;
+        display: flex !important;
+        margin-left: 10px;
+    }
+
+    .clear {
+        position: absolute !important;
+        font-size: x-large;
+        color: color($colors, danger);
+        right: 20px;
+    }
+
+    .removeMarginScroll .scroll-content{
+        margin-bottom: 0px !important;
+    }
+}

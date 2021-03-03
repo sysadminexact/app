@@ -1,0 +1,43 @@
+page-home {
+    p{
+        white-space: normal !important;
+    }
+
+    .item-os:nth-child(odd){
+        background-color: #F8F8F8;
+    }
+    
+    .item-inner{
+        border: 0 !important;
+    }
+    
+    .item-os{
+        border-bottom: 3px #dedede double !important;
+    }
+    .item-os:first-child{
+        border-top: 3px #dedede double !important;
+    }
+    .os-title{
+        font-size: smaller;
+        font-weight: 500;
+        padding-bottom: 3px;
+    }
+    
+    .os-desc{
+        font-size: small;
+    }
+
+    .footer {
+        text-align: center;
+        background-color: #F8F8F8;
+        font-style: italic;
+        font-size: small;
+        padding: 5px;
+        border-top: 0.55px rgba(0, 0, 0, 0.3) solid;
+    }
+
+    .item-os [col-12]{
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+}

@@ -1,0 +1,25 @@
+<ion-content scroll="false">
+    <div class="splash-bg"></div>
+    <div class="splash-info">
+      <div class="splash-logo"></div>
+    </div>
+    <div padding>
+
+      <div class="row">
+          <div class="col" offset-1 col-10>
+            <ion-item>
+              <ion-input type="email" [(ngModel)]="user.email" placeholder="E-mail"></ion-input>
+            </ion-item>
+          </div>
+          <div class="col" offset-1 col-10>
+            <ion-item>
+              <ion-input type="password" [(ngModel)]="user.password" placeholder="Senha"></ion-input>
+            </ion-item>
+          </div>
+          <div class="col" offset-1 col-10>
+            <button ion-button color="primary" text-center block (click)="login(user)">Entrar</button>
+          </div>
+        </div>
+    </div>
+  </ion-content>
+  
